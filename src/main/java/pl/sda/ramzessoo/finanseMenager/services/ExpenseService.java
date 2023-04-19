@@ -5,6 +5,7 @@ import pl.sda.ramzessoo.finanseMenager.entity.Expense;
 import pl.sda.ramzessoo.finanseMenager.repository.ExpenseRepository;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class ExpenseService {
 
@@ -22,6 +23,12 @@ public class ExpenseService {
         expense.setComment(comment);
         expenceRepository.insert(expense);
     }
+
+    public Set<Expense> findAll(){
+        Set<Expense> expenses = expenceRepository.findAll();
+        return expenses;
+    }
+
 
     public void removeExpense(Expense expense) {
         expenceRepository.remove(expense.getId());

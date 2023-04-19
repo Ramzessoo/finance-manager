@@ -2,7 +2,10 @@
 package pl.sda.ramzessoo.finanseMenager.services;
 
 import pl.sda.ramzessoo.finanseMenager.entity.Category;
+import pl.sda.ramzessoo.finanseMenager.entity.Expense;
 import pl.sda.ramzessoo.finanseMenager.repository.CategoryRepository;
+
+import java.util.Set;
 
 public class CategoryService {
 
@@ -18,7 +21,10 @@ public class CategoryService {
         categoryRepository.insert(category);
 
     }
-
+    public Set<Category> findAll() {
+        Set<Category> categories = categoryRepository.finfAll();
+        return categories;
+    }
 
     public void removeCategory(Category category) {
         categoryRepository.remove(category.getId());

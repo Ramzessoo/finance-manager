@@ -1,6 +1,7 @@
 package pl.sda.ramzessoo.finanseMenager.services;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import pl.sda.ramzessoo.finanseMenager.DbConnection;
 import pl.sda.ramzessoo.finanseMenager.entity.Income;
 import pl.sda.ramzessoo.finanseMenager.repository.IncomeRepository;
@@ -23,6 +24,11 @@ public class IncomeService {
         income.setAddDate(addDate);
         income.setComment(comment);
         incomeRepository.insert(income);
+    }
+
+    public Set<Income> findAll() {
+        Set<Income> incomes = incomeRepository.findAll();
+        return incomes;
     }
 
     public void removeIncome(Income income) {

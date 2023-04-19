@@ -4,6 +4,10 @@ import jakarta.persistence.EntityManager;
 import pl.sda.ramzessoo.finanseMenager.DbConnection;
 import pl.sda.ramzessoo.finanseMenager.entity.Expense;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class ExpenseRepository {
 
     public void insert(Expense expense) {
@@ -14,8 +18,13 @@ public class ExpenseRepository {
         entityManager.close();
     }
 
-    public Expense showAll(){
-        return null;
+    public Set<Expense> findAll() {
+        EntityManager entityManager = DbConnection.getEntityManager();
+        List<Expense> expenses = entityManager
+                .createQuery("From expense", Expense.class)
+                .getResultList();
+
+        return new HashSet<>(expenses);
     }
 
     public void remove(Long Id) {

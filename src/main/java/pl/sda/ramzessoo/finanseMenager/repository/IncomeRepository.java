@@ -4,6 +4,10 @@ import jakarta.persistence.EntityManager;
 import pl.sda.ramzessoo.finanseMenager.DbConnection;
 import pl.sda.ramzessoo.finanseMenager.entity.Income;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class IncomeRepository {
 
     public void insert(Income income) {
@@ -12,6 +16,14 @@ public class IncomeRepository {
         entityManager.persist(income);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+
+    public Set<Income> findAll(){
+        EntityManager entityManager = DbConnection.getEntityManager();
+        List<Income> incomes = entityManager
+                .createQuery("From income", Income.class)
+                .getResultList();
+        return new HashSet<>(incomes);
     }
 
     public void remove(Long Id) {
