@@ -15,7 +15,7 @@ public class DbInitializer {
 
     public void initDb() throws IOException, SQLException {
         try (InputStream category = getClass().getResourceAsStream("/sql/category_ddl.sql");
-             InputStream expence = getClass().getResourceAsStream("/sql/explence_ddl.sql");
+             InputStream expence = getClass().getResourceAsStream("/sql/expense_ddl.sql");
              InputStream income = getClass().getResourceAsStream("/sql/income_ddl.sql")) {
             executeSqlFromResource(category);
             executeSqlFromResource(expence);

@@ -2,23 +2,27 @@ package pl.sda.ramzessoo.finanseMenager.repository;
 
 import jakarta.persistence.EntityManager;
 import pl.sda.ramzessoo.finanseMenager.DbConnection;
-import pl.sda.ramzessoo.finanseMenager.entity.Category;
+import pl.sda.ramzessoo.finanseMenager.entity.Expense;
 
-public class CategoryRepository {
+public class ExpenseRepository {
 
-    public void insert(Category category){
+    public void insert(Expense expense) {
         EntityManager entityManager = DbConnection.getEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(category);
+        entityManager.persist(expense);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    public void remove(Long categoryId){
+    public Expense showAll(){
+        return null;
+    }
+
+    public void remove(Long Id) {
         EntityManager entityManager = DbConnection.getEntityManager();
         entityManager.getTransaction().begin();
-        Category category = entityManager.find(Category.class, categoryId);
-        entityManager.remove(category);
+        Expense expense = entityManager.find(Expense.class, Id);
+        entityManager.remove(expense);
         entityManager.getTransaction().commit();
         entityManager.close();
     }

@@ -8,7 +8,7 @@ public class DbConnection {
     private static final EntityManagerFactory entityManagerFactory = Persistence
             .createEntityManagerFactory("finance-manager");
 
-    public static EntityManager entityManager() {
+    public static EntityManager getEntityManager() {
         return entityManagerFactory.createEntityManager();
     }
 
